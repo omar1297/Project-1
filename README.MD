@@ -1,9 +1,11 @@
 Project Explination
 
+-  Original Tc Tac Toe rules
 -  Two player game of Tic Tac Toe
 -  Player X is first
 -  Player O is second 
 -  Both players make a moves buy clicking on empty cell (empty box)
+-  Player with three "X" or "O" in a row wins.
 
 
 User Stories :
