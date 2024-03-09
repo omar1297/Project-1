@@ -1,43 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Select the game board and individual cells
+    
     const board = document.getElementById('board');
     const cells = document.querySelectorAll('.cell');
-    let currentPlayer = 'X'; // Set the initial player to X
-    let gameActive = true; // Set the game state to active
+    let currentPlayer = 'X'; 
+    let gameActive = true; 
 
-    // Initialize the game
+    
     const startGame = () => {
-        // Loop through each cell and add click event listeners
+    
         cells.forEach(cell => {
-            cell.innerText = ''; // Clear the cell content
-            cell.addEventListener('click', handleClickInBox); // Add click event listener
+            cell.innerText = ''; 
+            cell.addEventListener('click', handleClickInBox); 
         });
     }
 
-    // Handle cell click event
+    
     const handleClickInBox = (event) => {
         const clickedCell = event.target;
-        // If the game is not active or the cell is already filled, return
+       
         if (!gameActive || clickedCell.innerText !== '') return;
         
         // Set the current cell text to the current player (X or O)
         clickedCell.innerText = currentPlayer;
 
-        // Check for a winner
+        
         if (checkWinner()) {
-            announceWinner(currentPlayer); // If there's a winner, announce the winner
-            gameActive = false; // Set the game state to inactive
+            announceWinner(currentPlayer); 
+            gameActive = false; 
             return;
         }
 
-        // Check for a draw
+
         if (checkDraw()) {
-            announceDraw(); // If it's a draw, announce the draw
-            gameActive = false; // Set the game state to inactive
+            announceDraw(); 
+            gameActive = false;
             return;
         }
 
-        // Switch to the next player
+        
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
     }
 
@@ -57,22 +57,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Check for a draw
+    
     const checkDraw = () => {
-        // Check if all cells are filled
+       
         return [...cells].every(cell => cell.innerText !== '');
     }
 
     // Announce the winner
     const announceWinner = (player) => {
-        alert(`Player ${player} wins!`); // Display prompt with winner
+        alert(`Player ${player} wins!`); 
     }
 
     // Announce a draw
     const announceDraw = () => {
-        alert('Its a draw!'); // Display prompt for draw
+        alert('Its a draw!'); 
     }
 
-    // Start the game
+    
     startGame();
 });
